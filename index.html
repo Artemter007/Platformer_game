@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Тайна кота-путешественника</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="main.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="hud">
+      <span class="hud__item">Очки: <b id="score">0</b></span>
+      <span class="hud__item">Уровень: <b id="level">1 / 5</b></span>
+      <span class="hud__item">Рекорд: <b id="best">0</b></span>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="game-view">Играть</button>
+      <button class="tab-btn" data-tab="story-view">
+        Дневник <span id="story-badge" class="badge hidden">!</span>
+      </button>
+    </nav>
+
+    <div id="game-view" class="view active">
+      <div class="stage">
+        <canvas id="game" width="960" height="540"></canvas>
+        <div id="overlay" class="overlay">
+          <h1 id="overlay-title">Тайна кота</h1>
+          <p id="overlay-text">Соберите 3 рыбки и доберитесь до кота.</p>
+          <button id="overlay-btn" type="button">Старт</button>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="btn-start" type="button">Старт</button>
+        <button id="btn-pause" type="button">Пауза</button>
+        <button id="btn-restart" type="button">Заново</button>
+      </div>
+
+      <div class="memo">
+        <div class="memo__row">
+          <span class="memo__keys">
+            <kbd>←</kbd> <kbd>→</kbd> <span class="memo__word">или</span> <kbd>A</kbd> <kbd>D</kbd>
+          </span>
+          <span class="memo__text">— движение,</span>
+          <span class="memo__keys">
+            <kbd>Space</kbd> <span class="memo__word">/</span> <kbd>W</kbd>
+          </span>
+          <span class="memo__text">— прыжок.</span>
+        </div>
+        <div class="memo__goal">
+          <span class="memo__star">✦</span> Соберите все рыбки и доберитесь до кота.
+        </div>
+      </div>
+
+      <div class="touch" id="touch-controls">
+        <button class="touch__btn" data-action="left" type="button">◀</button>
+        <button class="touch__btn" data-action="right" type="button">▶</button>
+        <button class="touch__btn touch__btn--jump" data-action="jump" type="button">⤒</button>
+      </div>
+    </div>
+
+    <div id="story-view" class="view">
+      <div class="journal">
+        <h2 class="journal__title">Дневник путешественника</h2>
+        <p class="journal__subtitle">Записки, найденные вами на уровнях.</p>
+        <div id="story-log" class="journal__content"></div>
+        <!-- Кнопка сброса прогресса -->
+        <button id="btn-reset-progress" class="reset-btn" type="button">Сбросить прогресс (для нового игрока)</button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
